@@ -1,9 +1,9 @@
 ---
-name: team-dash-spec
-description: Build a specification from supplied context using a team of sub-agents with different personas (engineer, tester, QA, researcher, security, etc.), then have an arbiter decide what goes in. Follows the project's existing spec format if one is defined, otherwise writes when-then / given-when-then (BDD) scenarios. Use when the user says "team-dash-spec", "write a spec for X", "spec this out from every angle", or wants a rigorous, over-constrained specification rather than a single-pass draft.
+name: team-spec
+description: Build a specification from supplied context using a team of sub-agents with different personas (engineer, tester, QA, researcher, security, etc.), then have an arbiter decide what goes in. Follows the project's existing spec format if one is defined, otherwise writes when-then / given-when-then (BDD) scenarios. Use when the user says "team-spec", "write a spec for X", "spec this out from every angle", or wants a rigorous, over-constrained specification rather than a single-pass draft.
 ---
 
-# team-dash-spec
+# team-spec
 
 Turn a description of *what is being defined* into a specification. Many personas contribute; one arbiter decides. Bias: **an over-constrained spec beats an under-constrained one.**
 
@@ -23,7 +23,7 @@ State the chosen format and its source in one line, then pass it verbatim to eve
 
 ## Step 2 — Get the context
 
-The user invokes the skill with the path to a **context markdown file** (e.g. `/team-dash-spec research/foo.md`). That file holds the background research and the focus of the work, and the spec is derived from it.
+The user invokes the skill with the path to a **context markdown file** (e.g. `/team-spec research/foo.md`). That file holds the background research and the focus of the work, and the spec is derived from it.
 
 - Read the whole file. If no path was given or it can't be read, ask once; do not proceed from memory or guesswork.
 - Follow links or file references inside it only where they are local and clearly relevant.

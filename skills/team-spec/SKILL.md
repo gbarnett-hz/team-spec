@@ -73,6 +73,12 @@ Spawn one arbiter sub-agent. Give it the context file, the format, and every con
 - **Consult** when an include/dismiss call hinges on missing information (unclear rationale, possible conflict, doubtful testability). The arbiter may put questions to the contributing team members before ruling. Keep each contributor's agent ID from Step 3. The arbiter returns a list of `{persona, question, item ID}` instead of a ruling; you relay each question to that contributor with `SendMessage` (all in parallel), then resume the arbiter (`SendMessage`, or a fresh arbiter given the full history) with the answers. Repeat as needed, at most 3 rounds, then the arbiter must rule. Answers are evidence, not votes: the arbiter still decides, and unresolved doubt defaults to include.
 - Produce: (a) the final spec in the required format with stable IDs, (b) a **Dismissed** table (item, persona, reason) , (c) **Open questions / assumptions** for the user.
 
-## Step 5 — Deliver
+## Step 5 — De-slop, then write
 
-Write the spec to the location the project's format dictates; otherwise `specs/<kebab-name>.md`. Append the Dismissed table and Open questions as trailing sections (or a sibling `<name>.review.md` if the project's format forbids extras). Report to the user: file path, format used and why, counts (contributed / included / dismissed), and the open questions. Do not paste the whole spec into chat.
+The spec is always written to a markdown file, never only to chat.
+
+1. Assemble the full document in memory or a scratch file: spec, Dismissed table, Open questions.
+2. **Run the `stop-slop` skill over it before writing.** Apply it to prose only: rationales, descriptions, headings, open questions. Leave IDs, scenario keywords (`Given/When/Then`, MUST/SHOULD), thresholds, identifiers, code and quoted source text untouched. The filter must not weaken or drop a constraint; if a rewrite changes meaning, keep the original wording.
+3. Write the filtered result to the location the project's format dictates; otherwise `specs/<kebab-name>.md`. Put the Dismissed table and Open questions in trailing sections (or a sibling `<name>.review.md` if the project's format forbids extras; filter that file too).
+
+Report to the user: file path, format used and why, counts (contributed / included / dismissed), and the open questions. Do not paste the whole spec into chat.
